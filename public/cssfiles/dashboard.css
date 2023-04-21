@@ -1,0 +1,101 @@
+body{
+    background-color: black;
+    cursor: pointer;
+    padding:0;
+    margin:0;
+   
+}
+.bg{
+    
+    height:710px;
+    width:800px;
+    border:1px solid black;
+    background-image: url(../images/dosa.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: right;
+    float: left;
+    
+    
+}
+
+/*.header{
+    text-align: center;
+    border:1px solid black;
+    height:5em;
+    background-color: blueviolet;
+    position:relative;
+    
+}
+*/
+ .menu ul li{
+    list-style: none;
+    height:100px;
+    float: left;
+    display: flex;
+    
+    
+ }
+.menu ul li a{
+    
+  padding: 20px;
+  display: block;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color:darkviolet;
+
+  font-size: 30px;
+  transition: 0.3s linear;
+}
+.menu ul li a:hover{
+    color:blue;
+}
+
+.line::after{
+    content: "";
+    background-color:aqua;
+    height:2px;
+    width:0;  
+   display: block;
+   margin: 0 auto;
+   transition: width .3;
+
+}
+.line:hover::after{
+    width:100%;
+    margin-top: 3px;
+    transition: width 0.3;
+}
+
+ .side{
+    height: 700px;
+    width: 700px;
+    float:right;
+    text-align: center;
+    border:1px solid black;
+    margin: 0 auto;
+ }   
+
+.h1{
+    margin-top: 200px;
+    color: aliceblue;
+    text-align: center;
+    align-items: center;
+   
+    
+}
+.btn1{
+   
+    color:azure;
+    background-color: blueviolet;
+   font-size: 20px;
+   border:none;
+   padding: 10px;
+   border-radius: 5px;
+  
+    
+}
+.flex{
+    display: flex;
+    flex-wrap:wrap;
+}

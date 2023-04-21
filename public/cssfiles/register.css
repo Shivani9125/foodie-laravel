@@ -1,0 +1,30 @@
+body{
+    background-color: black;
+}
+
+.container{
+    border:2px solid blue;
+    background-color:lightblue;
+    border-radius: 50px;
+    margin:100px auto;
+    padding:20px;
+    width: 35vw;
+    flex-wrap: wrap;;
+
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn1{
+    font-size: large;
+    
+    background-color:chartreuse;
+
+}
+.messages{
+    color: red;
+}
