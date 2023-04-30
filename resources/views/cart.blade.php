@@ -7,37 +7,44 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('cssfiles/cart.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-   
-   <div class="container">
-      <table class="table">
-        <thead>
-            <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Add to Cart</th>
-            <th>Order Now</th>
+<div class="input-group mb-3">
+    <form action="">
+        <input class="form-control" type="search" placeholder="Search" name="search" value="{{$search}}">
+        <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
+</div>
+<div class="flex">   
+@foreach ($foods as $item)
+<div class="card">
+<img src="images/{{$item->image}}" class="card-img" alt="">
+<h2>{{$item->name}}</h2>
+<h3>{{$item->price}}</h3>
+<p>{{$item->description}}</p>
+<div>
+    <form action="add-to-cart" method="post">
+    @csrf
+      <input type="hidden" name="item_id" value = "{{$item['Id']}}"> 
+      @csrf
+      <div class="input-group text-center mb-2" style="width:120px;">
+             <!-- <button type="button" wire:loading.attr="disabled" wire:click="decrementQuantity{{$item->Id}}" class="btn btn1"><i class="fa fa-minus"></i></button>   -->
+            <label class="form-label" for="quantity">Quantity: </label>
+           <input type="text" name="quantity" class="form-control qty-input text-center" value= "1">
+           <!-- <button type="button" wire:click="incrementQuantity{{$item->Id}}" class="btn btn1"><i class="fa fa-plus"></i></button>  -->
+</div>
+        <button class="btn btn-primary">Add To Cart</button>
+    </form>
+    <a href="order"><button class="btn btn-success">Order</button></a>
+</div>
+</div>
+@endforeach
 
-</tr>
-</thead>
-<tbody>
-    <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button type="add" class="btn btn-primary" name="add">Add</td>
-            <td><button type="order" class="btn btn-primary" name="order">Order</td>
-
-
-</tr>
-</tbody>
-</table>
 </div>
 
-
-            </body>
+      
+</body>
 </html>

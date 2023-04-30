@@ -19,6 +19,11 @@ Route::get('/', function () {
 Route::view('login','login');
 Route::view('register','register');
 Route::post('insertData',[mycontroller::class,'insert']);
-Route::view('dashboard','dashboard');
+Route::get('dashboard',[mycontroller::class,'dashboard']);
 Route::post('loginUsers',[mycontroller::class,'login']);
-Route::view('cart','cart');
+Route::get('cart',[mycontroller::class,'view']);
+Route::view('order','order');
+Route::view('add-to-cart','add-to-cart');
+Route::post("add-to-cart",[mycontroller::class,'addtoCart']);
+Route::get('add-to-cart',[mycontroller::class,'cartList']);
+Route::get('removecart/{Id}',[mycontroller::class,'removeCart']);
