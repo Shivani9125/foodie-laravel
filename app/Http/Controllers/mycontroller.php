@@ -86,29 +86,37 @@ class mycontroller extends Controller
     // {
      if($req->session()->has('user'))
      {
-    
+      $food_check = food::where('Id', $req->get('item_id'))->exists();
+      
+         if($food_check){
+          if(cart::where('food_id',$req->get("item_id"))->where('user_id',$req->session()->get('user_id'))->exists())
+           {
+             return redirect("cart");
+           }
+          
+     
+        else{
+      
    
   
         $cart = new cart;
         
-     // $data = session()->get('user.id');
-     //  $data = register::find($Id);
-      //  $data->Session::getId('user')['id'];
-        
+    
         $cart->food_id=$req->get('item_id');
-       // $sessionId= session()->getId();
 
          $cart->user_id=$req->session()->get('user_id');
          $cart->quantity=$req->get('quantity');
-        //$cart->user_id=$req->user->Id;
-        $cart->save();
-        return redirect("add-to-cart");
+         $cart->save();
+         return redirect("add-to-cart");
       }
-    else
+   }
+  }  
+else
     {
        return redirect("login");
     }
-   }
+     }
+   
    static function cartList()
    {
     $userId= Session::get('user_id');
