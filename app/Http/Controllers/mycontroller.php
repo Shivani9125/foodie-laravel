@@ -9,6 +9,8 @@ use App\Models\register;
 use App\Models\food;
 use App\Models\User;
 use App\Models\cart;
+use App\Models\Order;
+
 use Session;
 class mycontroller extends Controller
 {
@@ -93,7 +95,7 @@ class mycontroller extends Controller
            {
              return redirect("cart");
            }
-          //  change
+         
      
         else{
       
@@ -133,4 +135,23 @@ else
      cart::destroy($Id);
     return redirect("add-to-cart");
    }
-}
+   public function cashOrder(){
+    $userId= Session::get('user_id');
+    $data = cart::where('user_id','=',$userId)->get();
+    foreach($data as $data)
+    {
+      $order= new Order;
+      $order->food_id=$data->food_id;
+      $order->user_id=$data->user_id;
+     $order->quantity=$data->quantity;
+      $order->save();
+      
+    }
+   return redirect('add-to-cart')->with('message','Successfully ordered');
+  } 
+  
+   }
+  
+   
+
+

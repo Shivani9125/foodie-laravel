@@ -33,13 +33,14 @@
       <div class="input-group text-center mb-2" style="width:120px;">
              <!-- <button type="button" wire:loading.attr="disabled" wire:click="decrementQuantity{{$item->Id}}" class="btn btn1"><i class="fa fa-minus"></i></button>   -->
             <label class="form-label" for="quantity">Quantity: </label>
-           <input type="text" name="quantity" class="form-control qty-input text-center" value= "1">
+            <input type="number" name="quantity" class="form-control qty-input text-center"  min="1" value= "1">
+
            <!-- <button type="button" wire:click="incrementQuantity{{$item->Id}}" class="btn btn1"><i class="fa fa-plus"></i></button>  -->
 </div>
-        <button class="btn btn-primary">Add To Cart</button>
+    <button class="btn btn-primary">Add To Cart</button>
     </form>
-    <a href="order"><button class="btn btn-success">Order</button></a>
 </div>
+        <a href=""><button class="btn btn-success">Order</button></a>
 </div>
 @endforeach
 
