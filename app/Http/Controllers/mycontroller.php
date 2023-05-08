@@ -81,57 +81,46 @@ class mycontroller extends Controller
     return view('cart')->with($data);
    }
 
-   public function addtoCart(Request $req )
-   {
-   // $user_id=Auth::user()->id;
-    //if(Auth::Id())
-    // {
-     if($req->session()->has('user'))
-     {
+  public function addtoCart(Request $req ) {
+    if($req->session()->has('user')) {
       $food_check = food::where('Id', $req->get('item_id'))->exists();
-      
-         if($food_check){
-          if(cart::where('food_id',$req->get("item_id"))->where('user_id',$req->session()->get('user_id'))->exists())
-           {
-             return redirect("cart");
-           }
-         
-     
-        else{
-      
-   
-  
-        $cart = new cart;
-        
-    
-        $cart->food_id=$req->get('item_id');
-
-         $cart->user_id=$req->session()->get('user_id');
-         $cart->quantity=$req->get('quantity');
-         $cart->save();
-         return redirect("add-to-cart");
-      }
-   }
-  }  
-else
-    {
-       return redirect("login");
+        if($food_check){
+          if(cart::where('food_id',$req->get("item_id"))->where('user_id',$req->session()->get('user_id'))->exists()) {
+            return redirect("cart");
+          }
+          else {
+            $cart = new cart;
+            $cart->food_id=$req->get('item_id');
+            $cart->user_id=$req->session()->get('user_id');
+            $cart->quantity=$req->get('quantity');
+            $cart->save();
+            return redirect("add-to-cart");
+          }
+        }
     }
-     }
-   
-   static function cartList()
-   {
+    else {
+      return redirect("login");
+    }
+  }
+
+  static function cartList() {
     $userId= Session::get('user_id');
     $data =  DB::table('cart')
     ->join('food','cart.food_id','food.id')
     ->select('food.*','cart.id as cart_id','cart.quantity')
     ->where('cart.user_id',$userId)
     ->get();
-   
-  return view('add-to-cart',['food'=>$data]);
-   }
+    return view('add-to-cart',['food'=>$data]);
+  }
 
-   function removeCart($Id){
+  public function show($id)
+  {
+      $item = food::findOrFail($id);
+      return view('add-to-cart', compact('item'));
+  }
+  
+
+  function removeCart($Id){
      cart::destroy($Id);
     return redirect("add-to-cart");
    }
