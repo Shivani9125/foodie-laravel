@@ -4,7 +4,7 @@
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>Page Title</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'> 
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
@@ -15,7 +15,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
         {{ session('message') }}
       </div>
-    @endif 
+    @endif
   </div>
   <div class="container">
     <table class="table">
@@ -37,13 +37,13 @@
             <td>{{ $item->description }}</td>
             <td>{{ $item->price * $item->quantity }}</td>
             <td>{{ $item->quantity }}</td>
-            <td><a href="{{ url('removecart', [$item->cart_id]) }}" class="btn btn-primary">Delete</a></td>    
+            <td><a href="{{ url('removecart', [$item->cart_id]) }}" class="btn btn-primary">Delete</a></td>
             <?php $totalprice = $totalprice + $item->price * $item->quantity ?>
           </tr>
         @endforeach
       </tbody>
     </table>
-    <div>       
+    <div>
       <h2 style="text-align:center;">Total Price : {{ $totalprice }}</h2>
     </div>
     <div>

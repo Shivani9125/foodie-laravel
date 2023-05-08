@@ -25,6 +25,6 @@ Route::get('cart',[mycontroller::class,'view']);
 Route::view('order','order');
 Route::view('add-to-cart','add-to-cart');
 Route::post("add-to-cart",[mycontroller::class,'addtoCart']);
-Route::get('add-to-cart', [mycontroller::class, 'addtoCart']);
+Route::get('add-to-cart',[mycontroller::class,'cartList']);
 Route::get('removecart/{Id}',[mycontroller::class,'removeCart']);
 Route::get('cash_order',[mycontroller::class,'cashOrder']);

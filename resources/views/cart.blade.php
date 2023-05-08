@@ -32,8 +32,16 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><b>{{$item->name}}</b></h5>
                             <p class="card-text flex-grow-1">{{$item->description}}</p>
+                            <h5>Price: ₹{{$item->price}}</h5>
                             <div class="text-center">
-                                <button class="btn btn-primary">Add to cart</button>
+                                <form action="add-to-cart" method="post">
+                                    @csrf
+                                    <input type="hidden" name="item_id" value="{{ $item['Id']}}">
+                                    <div class="input-group mb-3">
+                                        <input type="number" name="quantity" class="form-control" value="1">
+                                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                    </div>
+                                </form>
                                 <button class="btn btn-success">Order</button>
                             </div>
                         </div>

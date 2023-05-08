@@ -33,7 +33,7 @@ class mycontroller extends Controller
        $reg->Nickname= $nickname;
        $reg->City= $city;
        $reg->save();
-     
+
        return redirect('login');
     }
 
@@ -48,19 +48,19 @@ class mycontroller extends Controller
           $req->session()->put('loginId',$reg->id);
           $req->session()->put('user_id',$reg->Id);
           $req->session()->put('user',$reg->Username);
-          
+
              return redirect('dashboard');
         }
         else{
           return back()->with('fail','Invalid Email');
         }
-      }    
+      }
 
           else{
   return back()->with('fail','Invalid Email');
 }}
 
-    
+
  public function dashboard(){
    return view('dashboard');
  }
@@ -113,13 +113,6 @@ class mycontroller extends Controller
     return view('add-to-cart',['food'=>$data]);
   }
 
-  public function show($id)
-  {
-      $item = food::findOrFail($id);
-      return view('add-to-cart', compact('item'));
-  }
-  
-
   function removeCart($Id){
      cart::destroy($Id);
     return redirect("add-to-cart");
@@ -134,13 +127,13 @@ class mycontroller extends Controller
       $order->user_id=$data->user_id;
      $order->quantity=$data->quantity;
       $order->save();
-      
+
     }
    return redirect('add-to-cart')->with('message','Successfully ordered');
-  } 
-  
+  }
+
    }
-  
-   
+
+
 
 
