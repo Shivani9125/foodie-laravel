@@ -39,7 +39,7 @@
             <td>{{ $item->quantity }}</td>
             <td><a href="{{ url('removecart', [$item->cart_id]) }}" class="btn btn-primary">Delete</a></td>
             <?php $totalprice = $totalprice + $item->price * $item->quantity ?>
-          </tr>
+        </tr>
         @endforeach
       </tbody>
     </table>
@@ -48,8 +48,8 @@
     </div>
     <div>
       <h2 style="font-size:25px; padding-bottom:15px;">Proceed to Order</h2>
-      <a href="{{ url('cash_order') }}" class="btn btn-danger">Cash on Delivery</a>
-      <a href="" class="btn btn-danger">Pay Using Card</a>
+      <a href="{{ url('cash_order')}}" class="btn btn-danger">Cash on Delivery</a>
+      <a href="{{ url('checkout')}}" class="btn btn-danger">Pay Using Card</a>
     </div>
   </div>
 </body>

@@ -42,7 +42,15 @@
                                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                                     </div>
                                 </form>
-                                <button class="btn btn-success">Order</button>
+                                <form action="add-orders" method="post">
+                                    @csrf
+                                    <input type="hidden" name="item_id" value="{{ $item['Id']}}">
+                                    <div class="input-group mb-3">
+                                        <input type="number" name="quantity" class="form-control" value="1">
+                                        <button type="submit" class="btn btn-primary">Order</button>
+                                    </div>
+                               </form> 
+                                
                             </div>
                         </div>
                     </div>

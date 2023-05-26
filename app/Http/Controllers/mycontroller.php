@@ -10,7 +10,8 @@ use App\Models\food;
 use App\Models\User;
 use App\Models\cart;
 use App\Models\Order;
-
+use App\Models\Direct_order;
+use Stripe;
 use Session;
 class mycontroller extends Controller
 {
@@ -24,7 +25,7 @@ class mycontroller extends Controller
         $user = $req->get('user');
         $email = $req->get('email');
         $password = $req->get('pass');
-       $nickname =  $req->get('nick');
+        $nickname =  $req->get('nick');
         $city = $req->get('city');
        $reg = new register();
        $reg->Username= $user;
@@ -117,7 +118,7 @@ class mycontroller extends Controller
      cart::destroy($Id);
     return redirect("add-to-cart");
    }
-   public function cashOrder(){
+   public function cash_order(){
     $userId= Session::get('user_id');
     $data = cart::where('user_id','=',$userId)->get();
     foreach($data as $data)
@@ -129,10 +130,76 @@ class mycontroller extends Controller
       $order->save();
 
     }
+
    return redirect('add-to-cart')->with('message','Successfully ordered');
   }
+  
+  public function addtoOrder(Request $req){
+    if($req->session()->has('user')){
+      $cart = new Direct_order;
+            $cart->food_id=$req->get('item_id');
+            $cart->user_id=$req->session()->get('user_id');
+            $cart->quantity=$req->get('quantity');
+            $cart->save();
+           return redirect('add-orders')->with('message','Successfully ordered');
+          }         
+    else
+     {
+      return redirect("login");
+    }
+}
+ static function orderList() {
+ //$direct_order = Direct_order::all();
+ $userId= Session::get('user_id');
+    $data =  DB::table('direct_orders')
+    ->join('food','direct_orders.food_id','food.id')
+    ->select('food.*','direct_orders.id as direct_orders_id','direct_orders.quantity')
+    ->where('direct_orders.user_id',$userId)
+    ->get();
+    return view('add-orders',['food'=>$data]);
+  }
+  function removeOrder($Id){
+    Direct_order::destroy($Id);
+   return redirect("add-orders");
+  }
+// echo "<pre>";
+// print_r($direct_order);
+// echo "</pre>";
 
-   }
+public function cash_on_delivery(){
+  $userId= Session::get('user_id');
+  $data = Direct_order::where('user_id','=',$userId)->get();
+  foreach($data as $data)
+  {
+    $order= new Order;
+    $order->food_id=$data->food_id;
+    $order->user_id=$data->user_id;
+   $order->quantity=$data->quantity;
+    $order->save();
+
+  }
+  return redirect('add-to-cart')->with('message','Successfully ordered');
+  
+}
+public function stripe($totalprice)
+{
+   return view('stripe',compact('totalprice'));
+}
+
+public function stripePost(Request $req)
+{
+  Stripe\Stripe::setApikey(env('STRIPE_SECRET'));
+  Stripe\Charge::create([
+    "amount"=>100*100,
+    "currency"=> "usd",
+    "source"=> $req->stripeToken,
+    "description"=>"This payment is tested purpose"
+  ]);
+
+  Session::flash('success','Payment succesful!');
+  return back();
+}
+}
 
 
 
