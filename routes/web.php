@@ -40,7 +40,8 @@ Route::post('add-orders',[mycontroller::class,'addtoOrder']);
 Route::get('add-orders',[mycontroller::class,'orderList']);
 Route::get('removeorder/{Id}',[mycontroller::class,'removeOrder']);
 Route::get('cash_on_delivery',[mycontroller::class,'cash_on_delivery']);
-
+Route::get('order',[mycontroller::class,'order']);
+Route::get('print_pdf/{id}',[mycontroller::class,'print_pdf']);
 //Route::get('/stripe/{totalprice}',[mycontroller::class,'stripe']);
 // Route::post('stripe',[mycontroller::class,'stripePost'])->name('stripe.post');
 Route::get('/checkout',[CheckoutController::class,'checkout']);

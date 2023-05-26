@@ -16,7 +16,7 @@
    
     <li><a href=""  class="line">Home</a></li>
     <li><a  href="cart" class="line">Cart</a></li>
-    <li><a  href="" class="line">Order</a></li>
+    <li><a  href="order" class="line">Order</a></li>
     <li><a href="" class="line">Contact</a></li>
     <li><a href="" class="line">Log Out</a></li>
 

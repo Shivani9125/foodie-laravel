@@ -13,6 +13,7 @@ use App\Models\Order;
 use App\Models\Direct_order;
 use Stripe;
 use Session;
+use PDF;
 class mycontroller extends Controller
 {
     //
@@ -141,7 +142,7 @@ class mycontroller extends Controller
             $cart->user_id=$req->session()->get('user_id');
             $cart->quantity=$req->get('quantity');
             $cart->save();
-           return redirect('add-orders')->with('message','Successfully ordered');
+            return redirect('add-orders')->with('message','Successfully ordered');
           }         
     else
      {
@@ -178,8 +179,19 @@ public function cash_on_delivery(){
     $order->save();
 
   }
-  return redirect('add-to-cart')->with('message','Successfully ordered');
+  return redirect('add-orders')->with('message','Successfully ordered');
   
+}
+
+public function order()
+{
+  $order = order::all();
+  return view("order",compact('order'));
+}
+public function print_pdf($id){
+  $order=order::find($id);
+  $pdf=PDF::loadView('order.pdf',compact('order'));
+  return $pdf->download('order_details.pdf');
 }
 public function stripe($totalprice)
 {

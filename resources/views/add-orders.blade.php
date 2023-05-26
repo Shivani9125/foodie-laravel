@@ -25,7 +25,7 @@
               <th>Price</th>
               <th>Quantity</th>
               <th>Remove</th>
-              <th>Order Now</th> 
+             
             </tr>
   </thead>
   <tbody>
