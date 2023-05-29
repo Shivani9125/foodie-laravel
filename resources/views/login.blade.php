@@ -10,25 +10,25 @@
   
 </head>
 <body>
-<div class="card">
+  <div class="card">
       <form action="loginUsers" method="post">
         @csrf
-          <h1>Login</h1>
-          <div class="form-group">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-control" type="text" name="email">
-            <span class="text-danger">@error('email') {{$message}} @enderror</span>
-          </div>
-          <div class="form-group">
+        <h1>Login</h1>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" type="text" name="email">
+          <span class="text-danger">@error('email') {{$message}} @enderror</span>
+        </div>
+        <div class="form-group">
           <label for="pass">Password</label>
           <input class="form-control" type="password" name="pass">
           <span class="text-danger">@error('pass') {{$message}} @enderror</span><br>
-       </div>
-          <div class="form-group">
-          <button type="submit" class="btn btn-success" name="submit">Login</button>
-        </form>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" name="submit">Login</button><br>
+          <a href="register">Create an Account</a>
+        </div>
+      </form>
     </div>
-</div>
-
-</body>
-</html>
+  </body>
+  </html>

@@ -51,6 +51,8 @@ class foodSeeder extends Seeder
             ]
             
         ] 
+
+       
     );
        
     }

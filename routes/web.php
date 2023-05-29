@@ -42,6 +42,17 @@ Route::get('removeorder/{Id}',[mycontroller::class,'removeOrder']);
 Route::get('cash_on_delivery',[mycontroller::class,'cash_on_delivery']);
 Route::get('order',[mycontroller::class,'order']);
 Route::get('print_pdf/{id}',[mycontroller::class,'print_pdf']);
+Route::get('diet',[mycontroller::class,'diet']);
+Route::post('diet',[mycontroller::class,'diet']);
+Route::view('diet','diet');
+Route::get('DailyDiet',[mycontroller::class,'DailyDiet']);
+Route::post('DailyDiet',[mycontroller::class,'DailyDiet']);
+Route::get('WeekDays',[mycontroller::class,'WeekDays']);
+Route::post('WeekDays',[mycontroller::class,'WeekDays']);
+Route::get('WeekEnds',[mycontroller::class,'WeekEnds']);
+
+Route::post('WeekEnds',[mycontroller::class,'WeekEnds']);
+
 //Route::get('/stripe/{totalprice}',[mycontroller::class,'stripe']);
 // Route::post('stripe',[mycontroller::class,'stripePost'])->name('stripe.post');
 Route::get('/checkout',[CheckoutController::class,'checkout']);
