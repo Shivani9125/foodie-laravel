@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+    background-color:rgb(215, 250, 246);
+    
+}
+h1{
+    border-style:double;
+    border: 5px;
+   
+}
+ul.myUl{
+    display: inline-block;
+    text-align: left;
+    
+
+}

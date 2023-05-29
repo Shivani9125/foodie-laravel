@@ -56,8 +56,8 @@ div {
 
     <select id="days" name="days">
       <option value="daily">Daily</option>
-      <option value="weekdays">WeekDays</option>
-      <option value="weekends">WeekEnds</option>
+      <option value="weekdays">Weekdays</option>
+      <option value="weekends">Weekend</option>
     </select>
     
     <input type="submit" value="Submit">

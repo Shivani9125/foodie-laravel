@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('cssfiles/dashboard.css')}}">
-    <title>Document</title>
-</head>
-<body>  
-    <div class="flex">
-        <div class="menu">
-        <div class="bg">  
-        <div>
-            <ul> 
-                <li><a href=""  class="line">Home</a></li>
-                <li><a  href="cart" class="line">Cart</a></li>
-                <li><a  href="order" class="line">Order</a></li>
-                <li><a href="diet" class="line">Diet Plan</a></li>
-                <li><a href="" class="line">Log Out</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-=======
 <!doctype html>
  <html class="no-js" lang="en">
     <head>
@@ -46,7 +20,6 @@
 
         <!--Theme custom css -->
         <link rel="stylesheet" href="{{asset('cssfiles/style.css')}}">
->>>>>>> fce6e6b260cdb9eccca4a310bfe689d538aaa732
 
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="{{asset('cssfiles/responsive.css')}}" />
@@ -108,11 +81,11 @@
 
                                     <ul class="nav navbar-nav navbar-right">
                                         <li><a href="#slider">Home</a></li>
-                                        <li><a href="#abouts">Menu</a></li>
-                                        <li><a href="#features">Features</a></li>
-                                        <li><a href="#portfolio">Delivery</a></li>
-                                        <li><a href="#ourPakeg">News</a></li>
-                                        <li><a href="#mobaileapps">Pages</a></li>
+                                        <li><a href="cart">Cart</a></li>
+                                        <li><a href="diet">Diet</a></li>
+                                        <li><a href="order">Orders</a></li>
+                                        <li><a href="login">Login</a></li>
+                                        <li><a href="register">Signup</a></li>
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
@@ -277,7 +250,7 @@
                                         <span>Lucknow,</span>
                                         <span>Uttar Pradesh</span>
                                         <span class="phone_email">phone: +91 9654796762</span>
-                                        <span>Email: kdeepanshu99@gmail.com</span></p>
+                                        <span>Email: Shivanshu@gmail.com</span></p>
                                 </div>
 
                                 <div class="footer_socail_icon">
